@@ -28,6 +28,7 @@ const Login = () => {
             console.log('userRes', userRes)
             if (!userRes) {
                 console.log('error')
+                setLoading(false)
             } else {
                 resetForm()
                 await typeof window !== 'undefined' && localStorage.setItem('login-user', JSON.stringify(userRes.user))

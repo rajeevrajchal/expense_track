@@ -29,7 +29,7 @@ const Input: NextPage<InputInterface> = (props) => {
                 </div>
                 {
                     props.icon && <div className="input-icon" onClick={() => props.handleIconClick()}>
-                        <FontAwesomeIcon icon={props.icon}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={props.icon}/>
                     </div>
                 }
             </div>

@@ -5,10 +5,12 @@ import {dbConnect} from "@plugins/db.mongo";
 
 const logOutUser = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
+        console.log('something')
         await dbConnect()
         let secure = process.env.NODE_ENV === "production";
         const myCookies = new Cookies(req, res, {secure});
         const refreshToken = myCookies.get('ExpenseTrackingRefreshToken')
+        console.log('refreshToken',refreshToken)
         const removeRefreshTokenRes = await userSession.findOneAndRemove({refresh_token: refreshToken})
         if (removeRefreshTokenRes) {
             await myCookies.set('ExpenseTrackingToken', '')

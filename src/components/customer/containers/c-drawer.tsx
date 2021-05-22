@@ -6,6 +6,7 @@ import {NextPage} from "next";
 import {useRouter} from "next/router";
 import {callApi} from "@plugins/call.axios";
 import {$FIXME} from "@utils/constant";
+import axios from "axios";
 
 interface DrawerInterface {
     setDrawer: (obj: boolean) => void
@@ -18,12 +19,14 @@ const Drawer: NextPage<DrawerInterface> = (props) => {
     const [loading, setLoading] = useState<boolean>(false)
     const handleLogout = async () => {
         setLoading(true)
-        const res: $FIXME = await callApi('POST', 'auth/logout', true)
+        console.log('hello world')
+        const res: $FIXME = await axios.post('/api/auth/logout')
+        console.log(res)
         if (res.status !== 200) {
             console.log('error on logout')
         }
-        localStorage.removeItem('login-user')
-        localStorage.removeItem('ExpenseTrackingToken')
+        await localStorage.removeItem('login-user')
+        await localStorage.removeItem('ExpenseTrackingToken')
         await router.replace('/')
         setLoading(false)
     }

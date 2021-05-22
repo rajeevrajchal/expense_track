@@ -1,4 +1,4 @@
-import {rNumber, rObject} from '@utils/model.fields';
+import {rNumber, rObject, uString} from '@utils/model.fields';
 import mongoose, {Schema} from "mongoose";
 import {rString} from "@utils/model.fields";
 
@@ -6,7 +6,7 @@ const expenseSchema = new Schema({
     name: rString,
     category: rObject,
     amount: rNumber,
-    date: rString,
+    date: uString,
     user_id: rString
 }, {
     timestamps: true

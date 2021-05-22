@@ -54,6 +54,7 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json({
         message: 'success full login',
         user: {
+            _id: userExist._id,
             address: userExist.address,
             createdAt: userExist.createdAt,
             email: userExist.email,

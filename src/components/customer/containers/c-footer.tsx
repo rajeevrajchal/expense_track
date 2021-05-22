@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from "@components/customer/containers/customer.module.scss";
 import Icon from "@ui/partials/icon";
 import {faDiceD6, faReceipt, faFileInvoice, faSearch, faPlus} from "@fortawesome/free-solid-svg-icons";
@@ -15,32 +16,36 @@ const CFooter = () => {
     return (
         <>
             <footer className={styles.customer_footer}>
-                <a href="/customer"
-                   className={`${styles.customer_footer_icon} ${router.asPath === "/customer" && styles.customer_footer_active_icon}`}>
-                    <Icon icon={faDiceD6} size={'lg'}></Icon>
-                    <label>discover</label>
-                </a>
-                <a href="/customer/receipts"
-                   className={`${styles.customer_footer_icon} ${router.asPath === "/customer/receipts" && styles.customer_footer_active_icon}`}>
-                    <Icon icon={faReceipt} size={'lg'}></Icon>
-                    <label>receipts</label>
-                </a>
+                <Link href="/customer">
+                    <div className={`${styles.customer_footer_icon} ${router.asPath === "/customer" && styles.customer_footer_active_icon}`}>
+                        <Icon icon={faDiceD6} size={'lg'}/>
+                        <label>discover</label>
+                    </div>
+                </Link>
+                <Link href="/customer/receipts">
+                    <div className={`${styles.customer_footer_icon} ${router.asPath === "/customer/receipts" && styles.customer_footer_active_icon}`}>
+                        <Icon icon={faReceipt} size={'lg'}/>
+                        <label>receipts</label>
+                    </div>
+                </Link>
                 <div className={`${styles.customer_footer_icon} ${styles.customer_footer_extra_icon}`}
                      onClick={() => dispatch(openModal({
                          mode: ModalEnum.add,
                      }))}>
-                    <Icon icon={faPlus} size={'lg'}></Icon>
+                    <Icon icon={faPlus} size={'lg'}/>
                 </div>
-                <a href="/customer/stats"
-                   className={`${styles.customer_footer_icon} ${router.asPath === "/customer/stats" && styles.customer_footer_active_icon}`}>
-                    <Icon icon={faFileInvoice} size={'lg'}></Icon>
-                    <label>stats</label>
-                </a>
-                <a href="/customer/search"
-                   className={`${styles.customer_footer_icon} ${router.asPath === "/customer/search" && styles.customer_footer_active_icon}`}>
-                    <Icon icon={faSearch} size={'lg'}></Icon>
-                    <label>search</label>
-                </a>
+                <Link href="/customer/stats">
+                    <div className={`${styles.customer_footer_icon} ${router.asPath === "/customer/stats" && styles.customer_footer_active_icon}`}>
+                        <Icon icon={faFileInvoice} size={'lg'}/>
+                        <label>stats</label>
+                    </div>
+                </Link>
+                <Link href="/customer/search">
+                    <div className={`${styles.customer_footer_icon} ${router.asPath === "/customer/search" && styles.customer_footer_active_icon}`}>
+                        <Icon icon={faSearch} size={'lg'}/>
+                        <label>search</label>
+                    </div>
+                </Link>
             </footer>
             {
                 state.modal.mode === ModalEnum.add && (<Modal title="New Transaction">

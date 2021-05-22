@@ -18,8 +18,6 @@ const Customer = () => {
 }
 
 import Cookies from "cookies";
-import {useRouter} from "next/router";
-import {$FIXME} from "@utils/constant";
 
 export const getServerSideProps = async (context) => {
     let secure = process.env.NODE_ENV === "production";

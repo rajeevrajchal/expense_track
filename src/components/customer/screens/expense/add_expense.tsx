@@ -1,17 +1,19 @@
 import styles from './expense.module.scss'
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import Input from "@ui/partials/input";
 import {faReceipt, faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import Button from "@ui/partials/button";
 import Select from "@ui/partials/select";
 import {callApi} from "@plugins/call.axios";
 import {$FIXME} from "@utils/constant";
+import {Context} from "@context/store";
+import {closeModal} from "@ui/shared/modal/services/modal-action";
 
 
-const AddExpense = (props) => {
-    console.log(props, 'props')
+const AddExpense = () => {
+    const {dispatch} = useContext(Context)
     const accessToken = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('ExpenseTrackingToken'))
     const user = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('login-user'))
     const [loading, setLoading] = useState(false)
@@ -35,6 +37,7 @@ const AddExpense = (props) => {
             console.log(res)
             if (res.status === 201) {
                 resetForm()
+                dispatch(closeModal())
             }
             setLoading(false)
         },
@@ -50,6 +53,8 @@ const AddExpense = (props) => {
                         placeholder={"Name of expenses"}
                         value={formik.values.name}
                         change={formik.handleChange}
+                        isError={formik.touched.name}
+                        error={formik.errors.name}
                     />
                 </div>
                 <div className="mt-md">
@@ -57,6 +62,8 @@ const AddExpense = (props) => {
                         name={'category'}
                         value={formik.values.category}
                         change={formik.handleChange}
+                        isError={formik.touched.category}
+                        error={formik.errors.category}
                         options={[
                             {
                                 label: "electronics",
@@ -75,6 +82,8 @@ const AddExpense = (props) => {
                         icon={faDollarSign}
                         name={'amount'}
                         placeholder={"amount of expenses"}
+                        isError={formik.touched.amount}
+                        error={formik.errors.amount}
                         value={formik.values.amount}
                         change={formik.handleChange}
                     />
