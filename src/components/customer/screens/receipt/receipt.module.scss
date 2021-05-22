@@ -1,0 +1,112 @@
+@import "src/styles/colors";
+@import "src/styles/vars";
+@import "src/styles/mixins";
+
+.receipt {
+  box-sizing: border-box;
+
+  .receipt_heading {
+    box-sizing: content-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    .receipt_heading_items{
+      box-sizing: content-box;
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      .receipt_heading_item {
+        box-sizing: content-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $xs $md;
+        border-radius: $md;
+        border: 1px solid $default-color;
+        outline: none;
+        position: relative;
+        margin: 0 $xs;
+        &:last-child{
+          margin-right: 0;
+        }
+        .title {
+          margin-right: $sm;
+        }
+
+        .icon {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .receipt_heading_options {
+      position: absolute;
+      box-sizing: content-box;
+      background: $soft-color;
+      border-radius: $md;
+      padding: $md;
+      width: 85%;
+      height: auto;
+      top: 13.5vh;
+      right: $md;
+      z-index: 999;
+      .receipt_heading_option_item{
+        box-sizing: content-box;
+        margin: $sm 0 ;
+        padding: $sm;
+        border-radius: $sm;
+        background: $secondary-color;
+        color: $text-light;
+      }
+    }
+  }
+
+  .receipt_collection {
+    box-sizing: content-box;
+    height: 80vh;
+    margin-top: $md;
+    overflow-y: scroll;
+
+    .receipt_item {
+      box-sizing: content-box;
+      display: flex;
+      align-items: center;
+      border-radius: $xs;
+      background: $soft-color;
+      margin-top: $md;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: $lg;
+      }
+
+      .receipt_item_icon {
+        box-sizing: content-box;
+        width: 50px;
+        height: 50px;
+        background: rgba(249, 171, 146, 1);
+        padding: $md;
+        overflow-y: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .receipt_item_content {
+        box-sizing: content-box;
+        flex: 1;
+        padding: 0 $md;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}

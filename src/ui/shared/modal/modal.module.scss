@@ -1,0 +1,59 @@
+@import "src/styles/colors";
+@import "src/styles/vars";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  .modalBackdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,00,0,0.6);
+
+  }
+  .modalBody{
+    min-width:350px;
+    max-width: 350px;
+    position: relative;
+    border-radius: 10px;
+    background:#FFFFFF;
+    z-index: 1;
+    animation:slideUp .3s;
+    width:30vw;
+    padding: $md;
+    .modalClose{
+      box-sizing: content-box;
+      background: $secondary-color;
+      color: $text-light;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-items: center;
+      border-radius: 50%;
+    }
+    .modalElements{
+      flex: 1;
+    }
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }to{
+     transform: translateY(0%);
+     opacity: 1;
+   }
+}

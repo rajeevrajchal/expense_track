@@ -1,0 +1,118 @@
+@import "src/styles/colors";
+@import "src/styles/vars";
+@import "src/styles/mixins";
+
+.auth_heading {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .company_heading {
+    width: 100px;
+    height: 100px;
+    border-radius: $sm;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .company_name {
+    margin-top: $lg;
+    color: $primary-color;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  .user_greeting {
+    color: $default-color;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    margin-top: $sm;
+  }
+}
+
+.login_screen {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 3rem 0;
+  padding: 0 $lg;
+  @include medium_screen {
+    width: 30%;
+  }
+
+  .login_form {
+    box-sizing: content-box;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.auth_social {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  .text {
+    text-transform: uppercase;
+  }
+  .social_media{
+    box-sizing: content-box;
+    margin-top: $lg;
+    .social_media_item{
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+      &:active {
+        transform: translateY(1px);
+        overflow: hidden;
+      }
+
+      &:active, &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.auth_footer {
+  box-sizing: content-box;
+  display: flex;
+  margin-top: 3rem;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+
+  .register_button, .forget_button {
+    h4 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1d1d1d;
+      text-transform: capitalize;
+      text-decoration: underline;
+      letter-spacing: 0.5px;
+      @include medium_screen {
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

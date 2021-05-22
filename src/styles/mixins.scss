@@ -1,0 +1,51 @@
+@import "breakpoint";
+
+// Small devices
+@mixin small_screen {
+  @media (min-width: #{$small-screen}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin medium_screen {
+  @media (min-width: #{$medium-screen}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin large_screen {
+  @media (min-width: #{$large-screen}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl-screen {
+  @media (min-width: #{$extra-large-screen}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin custom_screen($screen) {
+  @media (min-width: $screen+'px') {
+    @content;
+  }
+}
+
+@mixin clickable{
+  outline: none;
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:active, &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
