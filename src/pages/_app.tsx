@@ -1,16 +1,16 @@
-import '../styles/globals.scss'
+import '../styles/globals.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import {config} from '@fortawesome/fontawesome-svg-core';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import { ContextProvider } from '@context/store';
 
 config.autoAddCss = false;
-import {ContextProvider} from "../context/store";
 
-function MyApp({Component, pageProps}) {
-    return (
-        <ContextProvider>
-            <Component {...pageProps} />
-        </ContextProvider>
-    )
+function MyApp({ Component, pageProps }) {
+  return (
+    <ContextProvider>
+      <Component {...pageProps} />
+    </ContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

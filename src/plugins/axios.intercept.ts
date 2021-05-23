@@ -1,33 +1,31 @@
-import axios, {AxiosError, AxiosResponse} from "axios";
-import Cookies from "cookies";
-import {$FIXME} from "@utils/constant";
-import {getUMonthM} from "@utils/uDate";
+import axios, { AxiosError } from 'axios';
+import Cookies from 'cookies';
 
-const axios_instance = axios.create();
+const axiosInstance = axios.create();
 
-axios_instance.interceptors.request.use(
-    config => {
-        let secure = process.env.NODE_ENV === "production";
-        const myCookies = new Cookies();
-        const accessToken = myCookies.get('ExpenseTrackingToken')
-        console.log('accessToken', accessToken)
-        if (accessToken) {
-            config.headers.authorization = "Bearer " + accessToken;
-        }
-        return config
-    },
-    (error: AxiosError) => {
-        if (error.response && error.response.status == 401) {
-            console.log('error')
-        }
-        return new Promise((reject) => {
-            reject(error)
-        })
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const secure = process.env.NODE_ENV === 'production';
+    const myCookies = new Cookies();
+    const accessToken = myCookies.get('ExpenseTrackingToken');
+    console.log('accessToken', accessToken);
+    if (accessToken) {
+      // eslint-disable-next-line no-param-reassign
+      config.headers.authorization = `Bearer ${accessToken}`;
     }
-)
+    return config;
+  },
+  (error: AxiosError) => {
+    if (error.response && error.response.status == 401) {
+      console.log('error');
+    }
+    return new Promise((reject) => {
+      reject(error);
+    });
+  }
+);
 
-
-// axios_instance.interceptors.response.use(
+// axiosInstance.interceptors.response.use(
 //     (response: AxiosResponse) => {
 //         return response
 //     },

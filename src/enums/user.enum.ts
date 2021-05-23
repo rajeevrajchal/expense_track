@@ -1,5 +1,6 @@
-export enum userRole {
-    super_admin,
-    admin,
-    customer
+// eslint-disable-next-line no-shadow
+export enum usersRole {
+  superAdmin,
+  admin,
+  customer,
 }

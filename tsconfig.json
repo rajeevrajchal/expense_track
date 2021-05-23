@@ -25,6 +25,9 @@
       "@containers/*": [
         "containers/*"
       ],
+      "@enum/*": [
+        "enum/*"
+      ],
       "@hoc/*": [
         "hoc/*"
       ],
