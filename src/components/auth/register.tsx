@@ -94,7 +94,7 @@ const Register = () => {
         <div className="mt-md flex flex-centered">
           <Button
             loading={loading}
-            btn_type="primary"
+            btnType="primary"
             label="Sign Up"
             handleClick={formik.handleSubmit}
           />

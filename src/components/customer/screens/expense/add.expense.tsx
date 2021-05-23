@@ -109,8 +109,7 @@ const AddExpense = () => {
         <div className="flex flex-centered">
           <div className="pa-md">
             <Button
-              loading={loading}
-              btn_type="secondary"
+              btnType="secondary"
               label="Clear"
               handleClick={formik.handleSubmit}
             />
@@ -118,7 +117,7 @@ const AddExpense = () => {
           <div className="pa-md">
             <Button
               loading={loading}
-              btn_type="primary"
+              btnType="primary"
               label="Save"
               handleClick={formik.handleSubmit}
             />

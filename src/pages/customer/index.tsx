@@ -16,11 +16,11 @@ const Customer = () => {
     console.log(res);
   };
   return (
-    <CustomerLayout title={'John Doe'} description="jhon doe">
+    <CustomerLayout title="John Doe" description="jhon doe">
       <p>this is customer </p>
       <Button
-        btn_type={'secondary'}
-        label={'refresh token'}
+        btnType="secondary"
+        label="refresh token"
         handleClick={() => handleRefreshToken()}
       />
     </CustomerLayout>
