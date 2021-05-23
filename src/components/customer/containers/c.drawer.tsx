@@ -10,6 +10,7 @@ import Icon from '@ui/partials/icon';
 import { NextPage } from 'next';
 import { $FIXME } from '@utils/constant';
 import axios from 'axios';
+import { toast } from 'react-toast';
 import styles from './drawer.module.scss';
 
 interface DrawerInterface {
@@ -27,14 +28,15 @@ const Drawer: NextPage<DrawerInterface> = (props) => {
     setLoading(true);
     console.log('hello world');
     const res: $FIXME = await axios.post('/api/auth/logout');
-    console.log(res);
-    if (res.status !== 200) {
-      console.log('error on logout');
+    if (res) {
+      await localStorage.removeItem('login-user');
+      await localStorage.removeItem('ExpenseTrackingToken');
+      await router.replace('/');
+      toast.success('Logging Out SuccessFull!');
+      setLoading(false);
+    } else {
+      toast.success('Logging Out Failed!');
     }
-    await localStorage.removeItem('login-user');
-    await localStorage.removeItem('ExpenseTrackingToken');
-    await router.replace('/');
-    setLoading(false);
   };
 
   return (
@@ -79,6 +81,7 @@ const Drawer: NextPage<DrawerInterface> = (props) => {
         <div
           className={`btn secondary ${styles.drawer_menu_item}`}
           onClick={() => handleLogout()}
+          key="logout"
         >
           {loading ? (
             <div className="lds-ring">

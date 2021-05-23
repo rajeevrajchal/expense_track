@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { $FIXME } from '@utils/constant';
+import { toast } from 'react-toast';
 
 export const loginUser = async (loginDetail: $FIXME) => {
-  const res = await axios.post('/api/auth/login', loginDetail);
-  if (res.status !== 200) {
-    return false;
+  const res: $FIXME = await axios.post('/api/auth/login', loginDetail);
+  console.log(res, 'api res');
+  if (!res) {
+    toast('Failed to login');
   }
-  return res.data;
+  return res;
 };

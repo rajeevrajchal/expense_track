@@ -5,6 +5,7 @@ import CNavbar from '@components/customer/containers/c.navbar';
 import CFooter from '@components/customer/containers/c.footer';
 import Drawer from '@components/customer/containers/c.drawer';
 import { useState } from 'react';
+import { ToastContainer } from 'react-toast';
 import styles from './hoc.module.scss';
 
 interface MainLayoutInterface {
@@ -31,6 +32,7 @@ const CustomerLayout: NextPage<MainLayoutInterface> = (props) => {
             <Drawer setDrawer={setDrawer} />
           </>
         )}
+        <ToastContainer delay={3000} position="top-center" />
         {children}
         {!drawer && <CFooter />}
       </main>

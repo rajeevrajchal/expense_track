@@ -9,6 +9,8 @@ import { callApi } from '@plugins/call.axios';
 import { $FIXME } from '@utils/constant';
 import { Context } from '@context/store';
 import { closeModal } from '@ui/shared/modal/services/modal.action';
+import { toast } from 'react-toast';
+import moment from 'moment';
 import styles from './expense.module.scss';
 
 const AddExpense = () => {
@@ -24,7 +26,7 @@ const AddExpense = () => {
     initialValues: {
       name: '',
       category: '',
-      date: '',
+      date: moment().unix(),
       amount: '',
       user_id: user._id,
     },
@@ -38,15 +40,17 @@ const AddExpense = () => {
       setLoading(true);
       const res: $FIXME = await callApi(
         'POST',
-        'expense',
+        '/api/expense',
         true,
         values,
         accessToken
       );
-      console.log(res);
-      if (res.status === 201) {
+      if (res) {
         resetForm();
+        toast.success('Expense stored successfully');
         dispatch(closeModal());
+      } else {
+        toast.error('Expense failed to stored.');
       }
       setLoading(false);
     },
@@ -94,15 +98,6 @@ const AddExpense = () => {
             isError={formik.touched.amount}
             error={formik.errors.amount}
             value={formik.values.amount}
-            change={formik.handleChange}
-          />
-        </div>
-        <div className="mt-md">
-          <Input
-            type="date"
-            name="date"
-            placeholder="Name of expenses"
-            value={formik.values.date}
             change={formik.handleChange}
           />
         </div>

@@ -13,6 +13,11 @@ nav.customer_navbar {
   align-items: center;
   justify-items: center;
   height: 9vh;
+
+  .customer_name {
+    text-transform: capitalize;
+  }
+
   .customer_accessible {
     box-sizing: content-box;
     height: 20px;
@@ -30,14 +35,14 @@ nav.customer_navbar {
   }
 }
 
-footer.customer_footer{
+footer.customer_footer {
   box-sizing: border-box;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 9vh;
-  overflow-y:hidden;
+  overflow-y: hidden;
   overflow-x: hidden;
   display: flex;
   justify-content: space-between;
@@ -45,7 +50,8 @@ footer.customer_footer{
   justify-items: center;
   padding: 0 $md;
   background: $text-light;
-  .customer_footer_icon{
+
+  .customer_footer_icon {
     box-sizing: content-box;
     display: flex;
     flex-direction: column;
@@ -55,16 +61,19 @@ footer.customer_footer{
     outline: none;
     color: $default-color;
     @include clickable;
-    label{
+
+    label {
       box-sizing: content-box;
       text-transform: capitalize;
       font-size: $sm + $xs;
     }
   }
-  .customer_footer_active_icon{
+
+  .customer_footer_active_icon {
     color: $accent-color;
   }
-  .customer_footer_extra_icon{
+
+  .customer_footer_extra_icon {
     box-sizing: content-box;
     background: $secondary-color;
     color: $text-light;
@@ -75,7 +84,8 @@ footer.customer_footer{
     justify-content: center;
     align-items: center;
     text-align: center;
-    i{
+
+    i {
       font-weight: bold;
     }
   }

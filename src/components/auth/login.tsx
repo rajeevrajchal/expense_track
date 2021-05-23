@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { loginUser } from '@components/auth/services/auth.action';
 import { $FIXME } from '@utils/constant';
+import { toast } from 'react-toast';
 import styles from './auth.module.scss';
 
 const Login = () => {
@@ -26,21 +27,20 @@ const Login = () => {
       setLoading(true);
       const userRes: $FIXME = await loginUser(values);
       console.log('userRes', userRes);
-      if (!userRes) {
-        console.log('error');
-        setLoading(false);
-      } else {
+      if (userRes) {
         resetForm();
         // eslint-disable-next-line no-unused-expressions
         typeof window !== 'undefined' &&
-          localStorage.setItem('login-user', JSON.stringify(userRes.user));
+          localStorage.setItem('login-user', JSON.stringify(userRes.data.user));
         // eslint-disable-next-line no-unused-expressions
         typeof window !== 'undefined' &&
           localStorage.setItem(
             'ExpenseTrackingToken',
-            JSON.stringify(userRes.token)
+            JSON.stringify(userRes.data.token)
           );
         await router.replace(`/customer`);
+      } else {
+        toast.error('Failed to login.');
       }
       setLoading(false);
     },

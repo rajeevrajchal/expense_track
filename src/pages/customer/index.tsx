@@ -1,8 +1,8 @@
 import CustomerLayout from '@hoc/customer.layout';
 import Button from '@ui/partials/button';
 import axios from 'axios';
-
 import Cookies from 'cookies';
+import { toast } from 'react-toast';
 
 const Customer = () => {
   const handleRefreshToken = async () => {
@@ -15,6 +15,10 @@ const Customer = () => {
     );
     console.log(res);
   };
+  const displayToast = async () => {
+    console.log('toast');
+    toast.success('Message sent successfully!');
+  };
   return (
     <CustomerLayout title="John Doe" description="jhon doe">
       <p>this is customer </p>
@@ -22,6 +26,11 @@ const Customer = () => {
         btnType="secondary"
         label="refresh token"
         handleClick={() => handleRefreshToken()}
+      />
+      <Button
+        btnType="secondary"
+        label="The Toast"
+        handleClick={() => displayToast()}
       />
     </CustomerLayout>
   );

@@ -1,9 +1,22 @@
 @import "vars";
 @import "colors";
+
+%box-center-all, .box-center-all {
+  box-sizing: content-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
 %flex,
 .flex {
   display: flex;
 }
+
 %row-reverse,
 .row-reverse {
   flex-direction: row-reverse;
@@ -11,7 +24,7 @@
 
 %column,
 .column {
- flex-direction: column;
+  flex-direction: column;
 }
 
 %column-reverse,
@@ -111,10 +124,11 @@
   flex-wrap: nowrap;
 }
 
-%low-visible-icon, .low-visible-icon{
+%low-visible-icon, .low-visible-icon {
   color: $soft-color;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     color: $darker-color;
   }
 }

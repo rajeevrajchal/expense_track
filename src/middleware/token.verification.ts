@@ -24,6 +24,7 @@ export const tokenVerification = async (
     if (verified) {
       return {
         status: true,
+        user: verified,
       };
     }
   } catch (e) {

@@ -10,7 +10,7 @@ export const callApi = (
 ) => {
   const config = {
     method,
-    url: `api/${url}`,
+    url: `${url}`,
     withCredentials: withCredential,
     headers: {
       'Content-Type': 'application/json',

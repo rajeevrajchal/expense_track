@@ -1,6 +1,9 @@
 import styles from '@components/customer/screens/receipt/receipt.module.scss';
+import { NextPage } from 'next';
+import { $FIXME } from '@utils/constant';
 
-const ReceiptItem = () => {
+const ReceiptItem: NextPage<$FIXME> = (props) => {
+  const { item } = props;
   return (
     <div className={styles.receipt_item}>
       <div className={styles.receipt_item_icon}>
@@ -8,10 +11,10 @@ const ReceiptItem = () => {
       </div>
       <div className={styles.receipt_item_content}>
         <div className={styles.receipt_item_label}>
-          <div className="title">Office Cab</div>
-          <div className="sub-title">Travel</div>
+          <div className="title">{item.name}</div>
+          <div className="sub-title">{item.category}</div>
         </div>
-        <div className={styles.receipt_item_amount}>Rs: {1 * 5}</div>
+        <div className={styles.receipt_item_amount}>Rs: {item.amount}</div>
       </div>
     </div>
   );

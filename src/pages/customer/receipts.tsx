@@ -1,13 +1,17 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import CustomerLayout from '@hoc/customer.layout';
 import ReceiptList from '@components/customer/screens/receipt/receipt.list';
 
 import Cookies from 'cookies';
+import { NextPage } from 'next';
+import { $FIXME } from '@utils/constant';
 
-const Receipts = () => {
+const Receipts: NextPage<$FIXME> = (pageProps) => {
+  const { accessToken } = pageProps;
+
   return (
-    <CustomerLayout title={'John Doe'} description="jhon doe">
-      <ReceiptList />
+    <CustomerLayout title="John Doe" description="jhon doe">
+      <ReceiptList accessToken={accessToken} />
     </CustomerLayout>
   );
 };

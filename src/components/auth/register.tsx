@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { callApi } from '@plugins/call.axios';
 import { loginUser } from '@components/auth/services/auth.action';
 import { $FIXME } from '@utils/constant';
+import { toast } from 'react-toast';
 import styles from './auth.module.scss';
 
 const Register = () => {
@@ -36,8 +37,7 @@ const Register = () => {
       setLoading(true);
       console.log('values', values);
       const res: $FIXME = await callApi('POST', 'auth/register', true, values);
-      console.log(res, res);
-      if (res.status === 201) {
+      if (res) {
         const userRes: $FIXME = await loginUser(values);
         // eslint-disable-next-line no-unused-expressions
         (await typeof window) !== 'undefined' &&
@@ -51,7 +51,7 @@ const Register = () => {
         await router.replace(`/customer`);
         resetForm();
       } else {
-        console.log(res, 'error');
+        toast.error('Failed To Register.');
       }
       setLoading(false);
     },

@@ -14,7 +14,7 @@ const CNavbar: NextPage<CNavbarInterface> = (props) => {
     JSON.parse(localStorage.getItem('login-user'));
   return (
     <nav className={styles.customer_navbar}>
-      <div className="customer_name">
+      <div className={styles.customer_name}>
         Hello, {user && user.name ? user.name : 'unknown'}
       </div>
       <div
